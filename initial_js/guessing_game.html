@@ -1,0 +1,53 @@
+<hmtl>
+	<head>
+<title>Guessing game
+</title>			
+<script>
+	var number = Math.floor(Math.random() * 50 + 1);
+   var tries = 0;
+	function newgame(){
+     number = Math.floor(Math.random() * 50 + 1);	
+    document.getElementById("guess").focus();
+	document.getElementById("guess").select(); 
+	tries = 0;
+	}
+	function checkguess(){
+	var guess = document.getElementById("guess").value;
+    	var msg = "";		 
+    tries++;
+	if (guess > number)
+		msg = guess + " was high. try again!";
+	else if (guess < number)
+	msg = guess + " was low. try again!"; 
+else {
+	msg = guess + " is correct number you win!";
+	msg = msg + " Try a new game. "
+	msg = msg + 
+	"(You won in " + tries + " tries)";
+
+var scoreboard = document.getElementById("scoreboard");
+	scoreboard.innerHTML =
+   " you guessed " + guess + " in " + tries + " tries <br> "+
+  scoreboard.innerHTML;
+	newgame()
+	}
+	var output = document.getElementById("output");
+	output.innerHTML= msg;
+	document.getElementById("guess").focus();
+	document.getElementById("guess").select();
+}
+</script>  
+<body onload = "newgame()" style="background-color: yellow"  >
+<h1>Chaitanya Vishwakarma's guessing game</h1>
+
+<form onsubmit="checkguess();return false;"> 
+Enter a number between 1 and 50 :
+  <input type = "text" id = "guess" size="6"> 
+ <button type="button"onclick ="checkguess()">guess!</button>
+</form>
+<h3 id = "output">guess a number and press the button.</h3>
+<h2>⬇️Your score⬇️</h2>
+<h4 id = "scoreboard"></h4>
+</head>
+ </body>
+</hmtl>
