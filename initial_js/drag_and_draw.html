@@ -1,53 +1,55 @@
 <html>
+
 <body style="background-color: lightblue">
-<h1 style="background-color: red" > ARCO Drawer (2.0)</h1>  
- <button onclick="refresh()"> Refresh </button>
- <button onclick="color='#ff0000'"> RED </button>
- <button onclick="color='#00ff00'"> GREEN </button>
- <button onclick="color='#0000ff'"> BLUE </button>
- <button onclick="color='random'"> RANDOM </button>
-<canvas id="imgCanvas" width="1420" height="710" onmousemove= "draw(event)"></canvas>
-<script>
+  <h1 style="background-color: red"> ARCO Drawer (2.0)</h1>
+  <button onclick="refresh()"> clear screen </button>
+  <button onclick="color='#ff0000'"> RED </button>
+  <button onclick="color='#00ff00'"> GREEN </button>
+  <button onclick="color='#0000ff'"> BLUE </button>
+  <button onclick="color='random'"> RANDOM </button>
+  <canvas id="imgCanvas" width="1420" height="710" onmousemove="draw(event)"></canvas>
+  <script>
 
-  var color='#ff0000';
+    var color = '#ff0000';
 
-  function refresh(){
-    theCanvas = document.getElementById('imgCanvas');
-    context = theCanvas.getContext('2d');
-    context.clearRect(0,0,theCanvas.width,theCanvas.height);
-  }
-	function randcolor(){
-    if(window.color == 'random'){
-  		var r = Math.round(Math.random() * 240 + 16 );
-  		var g = Math.round(Math.random() * 240 + 16 );
-      var b = Math.round(Math.random() * 240 + 16 );
-      var color = "#" + r.toString(16) + g.toString(16) + b.toString(16); 
-      return color; 
-    }else{
-      return window.color
+    function refresh() {
+      theCanvas = document.getElementById('imgCanvas');
+      context = theCanvas.getContext('2d');
+      context.clearRect(0, 0, theCanvas.width, theCanvas.height);
     }
-	}
- function draw(e){
+    function randcolor() {
+      if (window.color == 'random') {
+        var r = Math.round(Math.random() * 240 + 16);
+        var g = Math.round(Math.random() * 240 + 16);
+        var b = Math.round(Math.random() * 240 + 16);
+        var color = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+        return color;
+      } else {
+        return window.color
+      }
+    }
+    function draw(e) {
 
-  
-    
-    if(e.buttons==0) return;
 
-    var canvas = document.getElementById("imgCanvas");
-    var ctx = canvas.getContext("2d");
-    var rect  = canvas.getBoundingClientRect();
-    var posx = e.clientX - rect.left;
-    var posy = e.clientY - rect.top;
-    ctx.fillStyle = randcolor() + "33"  ;
-    ctx.beginPath();
-    ctx.arc(posx, posy, 50, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = "#000000";  
-    ctx.beginPath();
-    ctx.arc(posx, posy, 50, 0, Math.PI * 2);
-    ctx.stroke();
-    
-}
-</script>
+
+      if (e.buttons == 0) return;
+
+      var canvas = document.getElementById("imgCanvas");
+      var ctx = canvas.getContext("2d");
+      var rect = canvas.getBoundingClientRect();
+      var posx = e.clientX - rect.left;
+      var posy = e.clientY - rect.top;
+      ctx.fillStyle = randcolor() + "33";
+      ctx.beginPath();
+      ctx.arc(posx, posy, 50, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#000000";
+      ctx.beginPath();
+      ctx.arc(posx, posy, 50, 0, Math.PI * 2);
+      ctx.stroke();
+
+    }
+  </script>
 </body>
+
 </html>
